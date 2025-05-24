@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 public class CourseUpdateReq {
-    @NotBlank(message = "Cần điền tên khóa học")
-    private String coursesName;
+//    @NotBlank(message = "Cần điền tên khóa học")
+//    private String coursesName;
 
     @Min(value = 0, message = "Số buổi học phải lớn hơn 0")
     private int session;

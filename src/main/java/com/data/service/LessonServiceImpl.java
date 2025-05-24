@@ -17,7 +17,24 @@ public class LessonServiceImpl implements LessonService{
 
     @Override
     public Page<Lesson> findAll(Pageable pageable) {
+
         return lessonRepo.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Lesson> findById(int id) {
+        return lessonRepo.findById(id);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        lessonRepo.deleteById(id);
+    }
+
+
+    @Override
+    public Lesson saveLesson(Lesson lesson) {
+        return lessonRepo.save(lesson);
     }
 
 }

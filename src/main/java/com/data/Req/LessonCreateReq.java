@@ -13,5 +13,5 @@ public class LessonCreateReq {
     private int hour;
 
     @NotBlank(message = "Cần điền mô tả bai học")
-    private String describe;
+    private String description;
 }

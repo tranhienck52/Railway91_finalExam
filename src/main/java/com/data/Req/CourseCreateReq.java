@@ -10,8 +10,8 @@ public class CourseCreateReq {
      private String coursesName;
 
     @Min(value = 0, message = "Số buổi học phải lớn hơn 0")
-    private int sessionNumber;
+    private int session;
 
     @Min(value = 0, message = "Số giờ học phải lớn hơn 0")
-    private int hoursNumber;
+    private int hour;
 }

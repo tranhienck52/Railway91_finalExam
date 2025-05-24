@@ -10,7 +10,6 @@ public class LessonDto {
 
     private int hour;
 
-    private String describe;
+    private String description;
 
-    private Long courseId;
 }

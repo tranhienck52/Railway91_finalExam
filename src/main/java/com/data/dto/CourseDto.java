@@ -9,7 +9,7 @@ public class CourseDto {
 
     private String coursesName;
 
-    private int sessionNumber;
+    private int session;
 
-    private int hoursNumber;
+    private int hour;
 }

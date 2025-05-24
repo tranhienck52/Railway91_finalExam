@@ -2,15 +2,19 @@ package com.data.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Data
 @Table
-public class Courses {
+@Getter
+@Setter
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "course_name",unique = true,nullable = false)
@@ -20,6 +24,6 @@ public class Courses {
 
     private int hours;
 
-    @OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "course")
     private List<Lesson>lessons;
 }
