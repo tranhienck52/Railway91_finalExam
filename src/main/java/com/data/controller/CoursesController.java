@@ -43,19 +43,19 @@ public class CoursesController {
     //Lấy chi tiết khóa học
     @GetMapping("/course/{id}")
     public  ResponseEntity<?> getCoursesById(@PathVariable int id, Pageable pageable){
-        Page<Course> pageCourses = coursesService.getCoursesById(id,pageable);
-        Page<CourseDto> courseDtos = modelMapper.map(pageCourses,new TypeToken<Page<CourseDto>>(){}.getType());
+        Page<Course> courses = coursesService.getCoursesById(id,pageable);
+        Page<CourseDto> courseDtos = courses.map(course -> modelMapper.map(course,CourseDto.class));
         return ResponseEntity.ok(courseDtos);
         }
 
-    @PostMapping("createCourse")
+    @PostMapping("/course/create")
     public ResponseEntity<?> create(@Valid @RequestBody CourseCreateReq courseCreateReq){
         Course courses = modelMapper.map(courseCreateReq, Course.class);
         coursesRepo.save(courses);
         return ResponseEntity.ok("Them khoa hoc moi thanh cong: " + courses.getCoursesName());
     }
 
-    @PutMapping("/course/{id}")
+    @PutMapping("/course/update/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody CourseUpdateReq courseUpdateReq,
                                     @PathVariable("id") int id){
           Optional<Course> opCourse = coursesService.findById(id);
@@ -65,7 +65,8 @@ public class CoursesController {
               Course course = opCourse.get();
               modelMapper.map(courseUpdateReq,course);
               Course updateCourse = coursesService.saveCourse(course);
-              return ResponseEntity.ok("Update khoa hoc thanh cong");
+              CourseDto courseDto = modelMapper.map(updateCourse,CourseDto.class);
+              return ResponseEntity.ok(courseDto);
           }
     }
 

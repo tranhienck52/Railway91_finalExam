@@ -71,7 +71,7 @@ public class LessonController {
     }
 
     @PutMapping("/lessons/{id}")
-    public ResponseEntity<?> updateLesson(@RequestBody LessonUpdateReq lessonUpdateReq,@PathVariable("id") int id){
+    public ResponseEntity<?> updateLesson(@Valid @RequestBody LessonUpdateReq lessonUpdateReq,@PathVariable("id") int id){
         Optional<Lesson> optionalLesson = lessonService.findById(id);
         if (!optionalLesson.isPresent()){
             return ResponseEntity.badRequest().body("Id không tồn tại");

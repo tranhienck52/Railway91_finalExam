@@ -22,7 +22,7 @@ public class Course {
 
     private int session;
 
-    private int hours;
+    private int hour;
 
     @OneToMany(mappedBy = "course")
     private List<Lesson>lessons;

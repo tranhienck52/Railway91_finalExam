@@ -13,5 +13,5 @@ public class CourseUpdateReq {
     private int session;
 
     @Min(value = 0, message = "Số giờ học phải lớn hơn 0")
-    private int hours;
+    private int hour;
 }
