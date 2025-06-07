@@ -1,11 +1,11 @@
-package com.data.Req;
+package com.data.form;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class LessonUpdateReq {
+public class LessonCreateForm {
     @NotBlank(message = "Cần điền tên bài học")
     private String lessonName;
 

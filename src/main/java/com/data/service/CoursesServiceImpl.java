@@ -1,20 +1,33 @@
 package com.data.service;
 
+import com.data.dto.CourseDto;
 import com.data.entity.Course;
+import com.data.form.CourseFilterForm;
 import com.data.repository.CoursesRepository;
+import com.data.specification.CourseSpecification;
 import jakarta.persistence.EntityNotFoundException;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class CoursesServiceImpl implements CoursesService {
+    @Autowired
     private CoursesRepository coursesRepo;
 
-    public CoursesServiceImpl(CoursesRepository coursesRepo) {
-        this.coursesRepo = coursesRepo;
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Override
+    public Page<Course> getall(CourseFilterForm form, Pageable pageable) {
+        Specification<Course> spec = CourseSpecification.buildSpec(form);
+        Page<Course> courses = coursesRepo.findAll(spec, pageable);
+        return courses;
     }
 
     @Override

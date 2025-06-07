@@ -1,14 +1,11 @@
-package com.data.Req;
+package com.data.form;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 @Data
-public class AccountCreateReq {
+public class AccountCreateForm {
     @NotBlank(message = "Cần điền username")
     private String username;
 
